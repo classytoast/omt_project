@@ -37,6 +37,6 @@ CREATE TABLE IF NOT EXISTS content.person_film_work (
     id uuid PRIMARY KEY,
     person_id uuid NOT NULL REFERENCES content.person (id),
     film_work_id uuid NOT NULL REFERENCES content.film_work (id),
-    role VARCHAR(256) NOT NULL
+    role VARCHAR(256) NOT NULL,
     created timestamp with time zone
 );
