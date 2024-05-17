@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.translation import gettext_lazy as _
 
 
 class TimeStampedMixin(models.Model):
@@ -19,8 +20,8 @@ class UUIDMixin(models.Model):
 
 
 class Genre(UUIDMixin, TimeStampedMixin):
-    name = models.CharField('name', max_length=255)
-    description = models.TextField('description', blank=True)
+    name = models.CharField(_('name'), max_length=255)
+    description = models.TextField(_('description'), blank=True)
 
     class Meta:
         # Таблицы находятся в нестандартной схеме. Это нужно указать в классе модели
@@ -36,13 +37,13 @@ class Genre(UUIDMixin, TimeStampedMixin):
 class FilmWork(UUIDMixin, TimeStampedMixin):
 
     class TypeChoices(models.TextChoices):
-        MOVIE = 'movie', 'Movie'
-        TV_SHOW = 'tv_show', 'TV Show'
+        MOVIE = 'movie', _('Movie')
+        TV_SHOW = 'tv_show', _('TV Show')
 
-    title = models.CharField('name', max_length=255)
-    description = models.TextField('description', blank=True)
+    title = models.CharField(_('title'), max_length=255)
+    description = models.TextField(_('description'), blank=True)
     creation_date = models.DateField()
-    rating = models.FloatField('rating', blank=True,
+    rating = models.FloatField(_('rating'), blank=True,
                                validators=[MinValueValidator(0),
                                            MaxValueValidator(100)])
     type = models.CharField(max_length=20, choices=TypeChoices.choices, null=False)
@@ -81,7 +82,7 @@ class Person(UUIDMixin, TimeStampedMixin):
 class PersonFilmWork(UUIDMixin):
     film_work = models.ForeignKey('FilmWork', on_delete=models.CASCADE)
     person = models.ForeignKey('Person', on_delete=models.CASCADE)
-    role = models.TextField('role', null=False)
+    role = models.TextField(_('role'), null=False)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
