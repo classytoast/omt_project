@@ -3,3 +3,5 @@
 **/__pycache__/
 **/config/__pycache__/
 test_files/
+migrate_from_sqlite/db.sqlite
+migrate_from_sqlite/dsn.py
