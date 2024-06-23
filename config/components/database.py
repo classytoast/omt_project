@@ -7,7 +7,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': 5432,
         'OPTIONS': {
             # Нужно явно указать схемы, с которыми будет работать приложение.
