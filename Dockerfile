@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 8000
 
 # Укажите, как запускать ваш сервис
-ENTRYPOINT ["python", "manage.py"]
+ENTRYPOINT ["python", "start_uwsgi.py"]
